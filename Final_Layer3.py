@@ -122,12 +122,15 @@ def plot_epss(current: float, predicted: float, cve_id: str):
 # ===================== MAIN =====================
 if __name__ == "__main__":
     sample_input = {
-        "cve_id": "CVE-2008-3844",
-        "cvss_vector": "AV:N/AC:M/Au:N/C:C/I:C/A:C",
-        "severity": "CRITICAL",
-        "cvss_score": 9.3,
-        "affected_assets": ["Server A", "Finance Server"]
-    }
+    "cve_id": "CVE-2026-0544",
+    "cvss_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P",
+    "severity": "MEDIUM",
+    "attack_vector": "NETWORK",
+    "cvss_score": 6.9,
+    "summary": "SQL injection in itsourcecode School Management System 1.0 allows remote exploitation via the student index.php ID parameter.",
+    "description": "A security flaw exists in itsourcecode School Management System 1.0 in an unknown part of the file /student/index.php. Manipulation of the argument ID results in SQL injection, allowing an attacker to execute arbitrary SQL and remotely exploit the vulnerability. Exploit code has been publicly released and may be used to attack vulnerable systems.",
+    "affected_assets": ["itsourcecode School Management System 1.0", "/student/index.php"]
+}
 
     summarizer = CVESummarizer(OPENROUTER_API_KEY, MODEL_NAME)
     ai_text = summarizer.summarize(sample_input)
@@ -156,3 +159,4 @@ if __name__ == "__main__":
 
     print(json.dumps(output, indent=2))
     plt.show()
+
